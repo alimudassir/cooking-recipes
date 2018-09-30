@@ -2,20 +2,45 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+
+    <!-- Bootstrap CSS
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    -->
+
+    <link href="webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="webjars/jquery/3.2.1/jquery.min.js"></script>
+
     <title>Recipe Home</title>
 </head>
 <body>
-<h1>My Recipes!</h1>
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card" th:if="${ not #lists.isEmpty(recipes)}">
+                <div class="card-header bg-primary">
+                    My Recipes
+                </div><!--card-header-->
+                <div class="card-block">
+                    <table class="table">
+                        <thead>
+                            <td><b>ID</b></td>
+                            <td><b>Description</b></td>
+                        </thead>
+                        <tr th:each="recipe : ${recipes}">
+                            <td th:text="${recipe.id}">123</td>
+                            <td th:text="${recipe.description}">dddd</td>
+                        </tr>
+                    </table>
+                </div><!--card-block-->
+            </div><!--card-->
+        </div><!--col-->
+    </div><!--row-->
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Description</th>
-    </tr>
-    <tr th:each="recipe : ${recipes}">
-        <td th:text="${recipe.id}">123</td>
-        <td th:text="${recipe.description}">Tasty Goodnees</td>
-    </tr>
-</table>
+</div><!--container-fluid-->
 </body>
 </html>
