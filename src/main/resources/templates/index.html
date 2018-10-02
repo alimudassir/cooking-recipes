@@ -14,7 +14,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card" th:if="${ not #lists.isEmpty(recipes)}">
-                <div class="card-header bg-primary">
+                <div class="card-header bg-dark text-white">
                     My Recipes
                 </div><!--card-header-->
                 <div class="card-block">
@@ -23,11 +23,13 @@
                             <td><b>ID</b></td>
                             <td><b>Description</b></td>
                             <td><b>View</b></td>
+                            <td><b>Update</b></td>
                         </thead>
                         <tr th:each="recipe : ${recipes}">
                             <td th:text="${recipe.id}">123</td>
                             <td th:text="${recipe.description}">dddd</td>
-                            <td><a href="#" th:href="@{'recipe/show/'+${recipe.id}}">View</a> </td>
+                            <td><a href="#" th:href="@{'recipe/'+${recipe.id}+'/show'}">View</a> </td>
+                            <td><a href="#" th:href="@{'recipe/'+${recipe.id}+'/update'}">Update</a> </td>
                         </tr>
                     </table>
                 </div><!--card-block-->
