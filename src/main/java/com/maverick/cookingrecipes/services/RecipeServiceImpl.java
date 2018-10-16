@@ -3,6 +3,7 @@ package com.maverick.cookingrecipes.services;
 import com.maverick.cookingrecipes.commands.RecipeCommand;
 import com.maverick.cookingrecipes.converters.RecipeCommandToRecipe;
 import com.maverick.cookingrecipes.converters.RecipeToRecipeCommand;
+import com.maverick.cookingrecipes.exceptions.NotFoundException;
 import com.maverick.cookingrecipes.models.Recipe;
 import com.maverick.cookingrecipes.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -40,7 +41,7 @@ public class RecipeServiceImpl implements RecipeService {
         Optional<Recipe> recipeOptional = recipeRepository.findById(id);
 
         if(!recipeOptional.isPresent()){
-            throw new RuntimeException("Recipe Not Found!");
+            throw new NotFoundException("Recipe Not Found. For ID value: " + id.toString() );
         }
 
         return  recipeOptional.get();
